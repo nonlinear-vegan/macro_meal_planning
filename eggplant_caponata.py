@@ -11,16 +11,7 @@ ingredients = {'eggplant':535,'cherry_tomato':164,'olives':94,'westsoy_tofu':397
 mass_cooked =876
 ## dish totals:
 dish_totals = recipie_macros.calc_macros(ingredients,mass_cooked)
+recipie_macros.print_ingredients(ingredients,mass_cooked)
 
-print ("Macronutrients per 100g:")
+recipie_macros.print_totals(dish_totals)
 
-print ("cal:    {0:>4.0f}".format(dish_totals['cal']))
-print ("fat:    {0:>4.0f}".format(dish_totals['fat']))
-print ("carbs:  {0:>4.0f}".format(dish_totals["carbs"]))
-print ("prot:   {0:>4.0f}".format(dish_totals["prot"]))
-
-
-#print ("cal:  %f2" % dish_totals['cal'])
-#print ("fat:   ",dish_totals['fat'])
-#print ("carbs: ",dish_totals['carbs'])
-#print ("prot:  ",dish_totals['prot'])
