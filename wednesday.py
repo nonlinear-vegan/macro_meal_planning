@@ -7,10 +7,12 @@ def get_ingredient_macros(ingredient):
 	### fats
 	flax_oil           = {'cal':40, 'fat':5,   'carbs':0, 'prot':0, 'amount':'1tsp'}  
 	coconut_oil        = {'cal':20, 'fat':2.3, 'carbs':0, 'prot':0, 'amount':'1/2teasp'}
+	black_olives       = {'cal':9,  'fat':1,   'carbs':1, 'prot':0, 'amount':'1olive'}
 	### proteins
 	westsoy_tofu        = {'cal':237, 'fat':13,  'carbs':7.5, 'prot':25,  'amount':'1/2brick'}
 	nigari_tofu         = {'cal':70,  'fat':4.2, 'carbs':1.7, 'prot':8.2, 'amount':'100g'}
 	banyan_tofu         = {'cal':225, 'fat':10,  'carbs':7.5, 'prot':25,  'amount':'1/2package'}
+	house_ef_tofu       = {'cal':140, 'fat':7,   'carbs':4,   'prot':16,  'amount':'1/2pachage'}
 	performance_protein = {'cal':160, 'fat':3,   'carbs':6,   'prot':30,  'amount':'1scoop'} 
 	vega_smoothie       = {'cal':90,  'fat':0.5, 'carbs':5,   'prot':15,  'amount':'1scoop'}
 	now_pea_protein     = {'cal':120, 'fat':2,   'carbs':1,   'prot':24,  'amount':'1levelscoop'}
@@ -84,7 +86,7 @@ if __name__ == '__main__':
 	print ("\n")
 	## BREAKFAST
 	print(colored("Breakfast:",'blue'))
-	breakfast = calc_macros(['westsoy_tofu','flax_oil','nutritional_yeast','romain_lettuce','red_pepper_bell','green_beans'])
+	breakfast = calc_macros(['house_ef_tofu','flax_oil','carrots','red_pepper_bell','romain_lettuce'])
 	print_totals(breakfast,False)
 	## MORNING SNACK
 	print(colored("Morning Snack:","blue"))
@@ -92,15 +94,15 @@ if __name__ == '__main__':
 	print_totals(morning_snack,False)
 	## LUNCH
 	print(colored("Lunch:","blue"))
-	lunch = calc_macros(['westsoy_tofu','nutritional_yeast','flax_oil','romain_lettuce','romain_lettuce','red_pepper_bell','green_beans'])
+	lunch = calc_macros(['house_ef_tofu','flax_oil','romain_lettuce','romain_lettuce','red_pepper_bell','carrots'])
 	print_totals(lunch,False)
 	## AFTERNOON SNACK (near workout time)
 	print(colored("Afternoon snack:","blue"))
-	afternoon_snack = calc_macros(['coconut_water_MP','vega_smoothie','orange','banana'])
+	afternoon_snack = calc_macros(['vega_smoothie','banana','orange'])
 	print_totals(afternoon_snack,False)
 	## DINNER
 	print(colored("Dinner:","blue"))
-	dinner = calc_macros(['carrots','broccoli','broccoli','flax_oil','acorn_squash','acorn_squash','acorn_squash','vega_smoothie'])
+	dinner = calc_macros(['now_pea_protein','acorn_squash','acorn_squash','acorn_squash','performance_protein','flax_oil','flax_oil'])
 	print_totals(dinner,False)
 	## DAY TOTALS
 	day_total = day_totals()
