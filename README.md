@@ -10,7 +10,7 @@ I can run, make small tweaks to foods and amounts, and run again.
 For me this is faster than entering things into the [myfitnesspal](http://www.myfitnesspal.com/) or
 [LoseIt](https://www.loseit.com/) UI,
 finding out I've missed a target by 25 g, and having to click around 
-the UI to try and fix it. (I love both myfitnesspal and LoseIt; can't decide which I like better :).
+the UI to try and fix it. (I love both myfitnesspal and LoseIt; can't decide which I like better :heart_decoration:).
 
 | File | Description |
 | ---- | ----------- |
