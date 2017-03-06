@@ -6,6 +6,8 @@ def get_ingredient_macros(ingredient):
 	""" macros for each ingredient quanity given amount field"""
 	### fats
 	flax_oil           = {'cal':40, 'fat':5,   'carbs':0, 'prot':0, 'amount':'1 tsp'}  
+	canola_oil_t       = {'cal':40, 'fat':5,   'carbs':0, 'prot':0, 'amount':'1 tsp'}  
+	canola_oil_T       = {'cal':124, 'fat':14,   'carbs':0, 'prot':0, 'amount':'1 T'}  
 	coconut_oil        = {'cal':20, 'fat':2.3, 'carbs':0, 'prot':0, 'amount':'1/2 teasp'}
 	black_olives       = {'cal':9,  'fat':1,   'carbs':1, 'prot':0, 'amount':'1 olive'}
 	### proteins
@@ -22,7 +24,8 @@ def get_ingredient_macros(ingredient):
 	### carbs
 	brown_rice_dry     = {'cal':171,'fat':1,  'carbs':36, 'prot':4, 'amount':'1/4 cup dry'}
 	rolled_oats        = {'cal':160,'fat':2.5,'carbs':27, 'prot':7, 'amount':'1/2 cup dry'}
-	sweet_potato       = {'cal':86, 'fat':0,  'carbs':20, 'prot':2, 'amount':'100 g'}
+	sweet_potato_100   = {'cal':86, 'fat':0,  'carbs':20, 'prot':2, 'amount':'100 g'}
+	sweet_potato_50    = {'cal':86/2, 'fat':0,  'carbs':20/2, 'prot':2/2, 'amount':'50 g'}
 	acorn_squash       = {'cal':40, 'fat':0,  'carbs':10, 'prot':1, 'amount':'100 g'}   
 	butternut_squash   = {'cal':60, 'fat':0,  'carbs':48, 'prot':4, 'amount':'1 bag'}
 	## sugar carbs
