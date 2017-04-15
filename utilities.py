@@ -17,8 +17,10 @@ def get_ingredient_macros(ingredient):
 	house_ef_tofu       = {'cal':140, 'fat':7,   'carbs':4,   'prot':16,  'amount':'1/2 pachage'}
 	azuma_tofu          = {'cal':175, 'fat':9,   'carbs':5,   'prot':18,  'amount':'1/2 package'}
 	performance_protein = {'cal':160, 'fat':3,   'carbs':6,   'prot':30,  'amount':'1 scoop'} 
+	performance_protein_half = {'cal':160/2, 'fat':3/2,   'carbs':6/2,   'prot':30/2,  'amount':'1/2 scoop'} 
 	vega_smoothie       = {'cal':90,  'fat':0.5, 'carbs':5,   'prot':15,  'amount':'1 scoop'}
 	now_pea_protein     = {'cal':120, 'fat':2,   'carbs':1,   'prot':24,  'amount':'1 level scoop'}
+	now_pea_protein_half   = {'cal':120/2., 'fat':1,   'carbs':1,   'prot':12,  'amount':'1/2 level scoop'}
 	nutritional_yeast_T = {'cal':20,  'fat':0,   'carbs':2,   'prot':3,   'amount':'1 T'}    
 	nutritional_yeast_t = {'cal':20/3,  'fat':0,   'carbs':2/3,   'prot':3/3,   'amount':'1 t'}    
 	### carbs
@@ -42,6 +44,7 @@ def get_ingredient_macros(ingredient):
 	cauliflower   = {'cal':25, 'fat':0.3, 'carbs':5,   'prot':1.9, 'amount':'100 g'}
 	broccoli      = {'cal':17, 'fat':0,   'carbs':3.5, 'prot':1.5, 'amount':'50 g'}
 	heb_veggies   = {'cal':300,'fat':3,   'carbs':60,  'prot':15,  'amount':'wholebag'}
+	heb_veggies_serving   = {'cal':60,'fat':0.5,   'carbs':12,  'prot':3,  'amount':'2/3cup'}
 	### other 
 	romain_lettuce     = {'cal':17, 'fat':0,   'carbs':3,   'prot':1,   'amount':'100 g'}  
 	green_leaf_lettuce = {'cal':15, 'fat':0,   'carbs':3,   'prot':1,   'amount':'100 g'}

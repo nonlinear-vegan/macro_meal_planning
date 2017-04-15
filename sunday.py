@@ -14,23 +14,23 @@ if __name__ == '__main__':
 	print ("\n")
 	## BREAKFAST
 	print(colored("Breakfast:",'blue'))
-	breakfast = ut.calc_macros(['westsoy_tofu','flax_oil'])
+	breakfast = ut.calc_macros(['westsoy_tofu','flax_oil','romain_lettuce','romain_lettuce'])
 	ut.print_totals(breakfast,False)
 	## MORNING SNACK
 	print(colored("Morning Snack:","blue"))
-	morning_snack = ut.calc_macros(['rolled_oats','rolled_oats','now_pea_protein','flax_oil','frozen_blueberries'])
+	morning_snack = ut.calc_macros(['romain_lettuce','rolled_oats','performance_protein'])
 	ut.print_totals(morning_snack,False)
 	## LUNCH
 	print(colored("Lunch:","blue"))
-	lunch = ut.calc_macros(['now_pea_protein','flax_oil','carrots','romain_lettuce','brown_rice_dry'])
+	lunch = ut.calc_macros(['canola_oil_t','rolled_oats','canola_oil_t','carrots_100','carrots_100','now_pea_protein_half'])
 	ut.print_totals(lunch,False)
 	## AFTERNOON SNACK (near workout time)
 	print(colored("Afternoon snack:","blue"))
-	afternoon_snack = ut.calc_macros(['performance_protein'])
+	afternoon_snack = ut.calc_macros(['vega_smoothie'])
 	ut.print_totals(afternoon_snack,False)
 	## DINNER
 	print(colored("Dinner:","blue"))
-	dinner = ut.calc_macros(['flax_oil','azuma_tofu','sweet_potato','sweet_potato','azuma_tofu','performance_protein'])
+	dinner = ut.calc_macros(['sweet_potato_100','sweet_potato_100','sweet_potato_100','flax_oil'])
 	ut.print_totals(dinner,False)
 	## DAY TOTALS
 	day_total = ut.day_totals(breakfast,morning_snack,lunch,afternoon_snack,dinner)
