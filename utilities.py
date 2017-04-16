@@ -1,6 +1,11 @@
 from termcolor import colored
 import json
 
+def macro_cals():
+	carbs = 4
+	prot  = 4
+	fat   = 9
+	return carbs,prot,fat
 
 def get_ingredient_macros(ingredient):
 	""" macros for each ingredient quanity given amount field"""
@@ -10,6 +15,7 @@ def get_ingredient_macros(ingredient):
 	canola_oil_T       = {'cal':124, 'fat':14,   'carbs':0, 'prot':0, 'amount':'1 T'}  
 	coconut_oil        = {'cal':20, 'fat':2.3, 'carbs':0, 'prot':0, 'amount':'1/2 teasp'}
 	black_olives       = {'cal':9,  'fat':1,   'carbs':1, 'prot':0, 'amount':'1 olive'}
+	chia_seeds         = {'cal':137,'fat':8.2, 'carbs':12.3,'prot':4.4,'amount':'28 g; 1 ounce'}
 	### proteins
 	westsoy_tofu        = {'cal':237, 'fat':13,  'carbs':7.5, 'prot':25,  'amount':'1/2 brick'}
 	nigari_tofu         = {'cal':70,  'fat':4.2, 'carbs':1.7, 'prot':8.2, 'amount':'100 g'}
@@ -55,33 +61,61 @@ def get_ingredient_macros(ingredient):
 	eggplant           = {'cal':25, 'fat':0.2, 'carbs':6,   'prot':1,   'amount':'100 g'}
 	cherry_tomato      = {'cal':18, 'fat':0.2, 'carbs':3.9, 'prot':0.9, 'amount':'100 g'}
 	tomato_red         = {'cal':32, 'fat':0,   'carbs':7,   'prot':2,   'amount':'1 cup chopped'}
+	### camping
+	walnuts            = {'cal':200,'fat':20,   'carbs':4,   'prot':5,  'amount':'30 g'}
+	almonds            = {'cal':170,'fat':15,   'carbs':7,   'prot':6,  'amount':'30 g'}
+	inner_peas         = {'cal':130,'fat':4.5,  'carbs':17,  'prot':5,  'amount':'28 g'}
+	fd_blueberries     = {'cal':130,'fat':0,    'carbs':31,  'prot':1,  'amount':'34 g; 1 bag'}
+	fd_strawberries    = {'cal':110,'fat':0,    'carbs':24,  'prot':2,  'amount':'28 g; 1 bag'}
+	cranberries        = {'cal':140,'fat':0.5,  'carbs':33,  'prot':0,  'amount':'40 g; 1/4 cup'}
+	minute_rice        = {'cal':150,'fat':1.5,  'carbs':32,  'prot':4,  'amount':'43 g'}
+	flake_coconut      = {'cal':30, 'fat':19,   'carbs':7,   'prot':2,  'amount':'30 g; 1/4 cup'}
+	flake_coconut_half = {'cal':30./2, 'fat':19./2,   'carbs':7./2,   'prot':2./2,  'amount':'15 g; 1/8 cup'}
+	flake_coconut_quarter = {'cal':30./4, 'fat':19./4,   'carbs':7./4,   'prot':2./4,  'amount':'7 g; 1/16 cup'}
+	cinnamon_chickpea  = {'cal':120,'fat':3,    'carbs':20,  'prot':5,  'amount':'28 g; 1/4 cup'}
+	harvest_crisps     = {'cal':120,'fat':5,    'carbs':16,  'prot':5,  'amount':'28 g; 22 pieces'}
+	sundried_tomato    = {'cal':70*3,'fat':2*3, 'carbs':8*3, 'prot':2*3,'amount':'3 servings'}
+	black_bean_soup    = {'cal':97,'fat':1,     'carbs':17,  'prot':6,  'amount':'30 g; 1/4 cup'}
 	return eval(ingredient)
 
-def calc_macros(ingredients):
+def calc_macros(ingredients,meal,f):
 	"""calc macros of meal using the commonly used amounts"""
+	f.write("\n\nMeal: "+meal+"\n")
 	totals = {'cal':0,'fat':0,'carbs':0,'prot':0}
 	for ingredient in ingredients:
 		macros = get_ingredient_macros(ingredient)
 		print (colored(("Ingredient", ingredient, " macros: ",macros), 'green'))
+		f.write("\nIngredient: "+ ingredient+ " macros: "+str(macros)+"\n")
 		for macro in ['cal','fat','carbs','prot']:
 			totals[macro] = totals[macro] + macros[macro]
 	return totals
 
-def print_totals(dish_totals,day):
+def print_totals(dish_totals,day,f,meal):
 	"""Pretty-ish print the fat/carbs/protein from input. If day=True, print the goals for the day"""
+
 	if day:
 		print ("fat:    {0:>4.0f} (daily goal:  58)".format(dish_totals['fat']))
 		print ("carbs:  {0:>4.0f} (daily goal: 185)".format(dish_totals["carbs"]))
 		print ("prot:   {0:>4.0f} (daily goal: 163)".format(dish_totals["prot"]))
+		f.write("\nfat:    {0:>4.0f} (daily goal:  58)\n".format(dish_totals['fat']))
+		f.write("carbs:  {0:>4.0f} (daily goal: 185)\n".format(dish_totals["carbs"]))
+		f.write("prot:   {0:>4.0f} (daily goal: 163)\n".format(dish_totals["prot"]))
 	else:
 		print ("fat:    {0:>4.0f}".format(dish_totals['fat']))
 		print ("carbs:  {0:>4.0f}".format(dish_totals["carbs"]))
 		print ("prot:   {0:>4.0f}".format(dish_totals["prot"]))
+		f.write("\nfat:    {0:>4.0f}\n".format(dish_totals['fat']))
+		f.write("carbs:  {0:>4.0f}\n".format(dish_totals["carbs"]))
+		f.write("prot:   {0:>4.0f}\n".format(dish_totals["prot"]))
 
 def day_totals(breakfast,morning_snack,lunch,afternoon_snack,dinner):
 	"""Sum up the totals for the day"""
 	sum = {'fat':0,'carbs':0,'prot':0}
+	calories = 0
 	for macro in ['fat','carbs','prot']:
 		sum[macro] = breakfast[macro] + morning_snack[macro] + lunch[macro] + afternoon_snack[macro] + dinner[macro]
-	return sum
-
+	## determin total calories:
+	calories = calories + (breakfast['fat'] + morning_snack['fat'] + lunch['fat'] + afternoon_snack['fat'] + dinner['fat'])* 9
+	calories = calories + (breakfast['carbs'] + morning_snack['carbs'] + lunch['carbs'] + afternoon_snack['carbs'] + dinner['carbs'])* 4
+	calories = calories + (breakfast['prot'] + morning_snack['prot'] + lunch['prot'] + afternoon_snack['prot'] + dinner['prot'])* 4
+	return sum,calories
