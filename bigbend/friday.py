@@ -6,6 +6,9 @@ sys.path.append("../")
 import utilities as ut
 
 if __name__ == '__main__':
+	today = sys.argv[0][2:-3]
+	f = open(today+".txt",'w')
+	f.write ('\nFOOD FOR: ' + today+"\n")
 	carbs,prot,fat = ut.macro_cals()
 	carbs_per_day = 185.0
 	prot_per_day  = 163.0
@@ -21,35 +24,31 @@ if __name__ == '__main__':
 	print ("Carbs in non-breakfast/non-workout:  {0:>4.0f} g".format((carbs_per_day)/3))
 	print ("\n")
 	print(colored("Day 2 of backpack","red"))
+	f.write("Day 2 of backpack\n")
 	## BREAKFAST
 	print(colored("Breakfast:",'blue'))
-	breakfast = ut.calc_macros(['rolled_oats','cinnamon_chickpea'])
-	ut.print_totals(breakfast,False)
+	breakfast = ut.calc_macros(['rolled_oats','cinnamon_chickpea'],'BREAKFAST',f)
+	ut.print_totals(breakfast,False,f,'BREAKFAST')
 	## MORNING SNACK
 	print(colored("Morning Snack:","blue"))
-	morning_snack = ut.calc_macros(['cranberries','flake_coconut_half'])
-	ut.print_totals(morning_snack,False)
+	morning_snack = ut.calc_macros(['cranberries','flake_coconut_half'],'MORNING SNACK',f)
+	ut.print_totals(morning_snack,False,f,'MORNING SNACK')
 	## LUNCH
 	print(colored("Lunch:","blue"))
-	lunch = ut.calc_macros(['almonds','cranberries','minute_rice','now_pea_protein'])
-	ut.print_totals(lunch,False)
+	lunch = ut.calc_macros(['almonds','cranberries','minute_rice','now_pea_protein'],'LUNCH',f)
+	ut.print_totals(lunch,False,f,'LUNCH')
 	## AFTERNOON SNACK (near workout time)
 	print(colored("Afternoon snack:","blue"))
-	afternoon_snack = ut.calc_macros(['flake_coconut_half','cranberries'])
-	ut.print_totals(afternoon_snack,False)
+	afternoon_snack = ut.calc_macros(['flake_coconut_half','cranberries'],'AFTERNOON SNACK',f)
+	ut.print_totals(afternoon_snack,False,f,'AFTERNOON SNACK')
 	## DINNER
 	print(colored("Dinner:","blue"))
-	dinner = ut.calc_macros(['minute_rice','now_pea_protein','performance_protein','performance_protein','flake_coconut_half'])
-	ut.print_totals(dinner,False)
+	dinner = ut.calc_macros(['minute_rice','now_pea_protein','performance_protein','black_bean_soup','flake_coconut_half'],'DINNER',f)
+	ut.print_totals(dinner,False,f,'DINNER')
 	## DAY TOTALS
 	day_total,dt_calories = ut.day_totals(breakfast,morning_snack,lunch,afternoon_snack,dinner)
 	print (colored("Day totals: ","red"))
-	ut.print_totals(day_total,True)
+	f.write("\n\nDAY TOTALS\n")
+	ut.print_totals(day_total,True,f,'DAY TOTAL')
 	print ("Calories for the day: ", dt_calories)
-
-# 4 meals and 2 snacks
-# same fraction of protein in each
-# 50 g carbs before workout
-# 50 g carbs after workout
-# fats in morning or dinner, not near workout
-
+	f.close()
