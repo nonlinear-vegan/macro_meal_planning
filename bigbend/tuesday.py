@@ -7,7 +7,7 @@ import utilities as ut
 
 if __name__ == '__main__':
 	today = sys.argv[0][2:-3]
-	f = open(today+".txt",'w')
+	f = open('plan_'+today+".txt",'w')
 	f.write ('\nFOOD FOR: ' + today+"\n")
 	carbs,prot,fat = ut.macro_cals()
 	carbs_per_day = 185.0
